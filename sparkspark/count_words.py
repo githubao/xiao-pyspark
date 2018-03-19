@@ -26,8 +26,10 @@ def run():
     input_file = 'C:\\Users\\BaoQiang\\Desktop\\test.txt'
 
     with pyspark.SparkContext('local', 'wordCount') as sc:
+        sc.setLogLevel("ERROR")
+
         # lines = sc.textFile(input_file)
-        lines = sc.parallelize(['i am foo','i am not silly'])
+        lines = sc.parallelize(['i am foo', 'i am not silly'])
         words = lines.flatMap(lambda line: line.split(' ')).map(lambda word: (word, 1))
         counts = words.reduceByKey(operator.add)
         sorted_counts = counts.sortBy(lambda x: x[1], False)
@@ -37,7 +39,7 @@ def run():
         # 把数据存储到磁盘上的持久化操作
         lines.persist()
 
-        foo_lines = lines.filter(lambda line:'foo' in line)
+        foo_lines = lines.filter(lambda line: 'foo' in line)
         print(foo_lines.first())
 
 
