@@ -44,6 +44,7 @@ K-means
 
 """
 
+
 def run():
     with pyspark.SparkContext('local', 'mapAndPartition') as sc:
         spam = sc.textFile('spam.txt')
