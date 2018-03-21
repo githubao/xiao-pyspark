@@ -13,6 +13,36 @@ from pyspark.mllib.regression import LabeledPoint
 from pyspark.mllib.feature import HashingTF
 from pyspark.mllib.classification import LogisticRegressionWithSGD
 
+"""
+1. 特征提取
+常用的技术：TF-IDF，word2vec
+常用的优化手段：缩放，正则化
+
+2. 统计
+最大值，最小值，平均值，方差
+
+3. 分类和回归
+分类：预测垃圾邮件
+回归：给定身高预测体重
+
+线性回归，逻辑回归，支持向量机，朴素贝叶斯，决策树和随机森林
+
+4. 聚类
+K-means
+
+5. 协同过滤和推荐
+
+6. 降维
+主成分分析 奇异值分解
+
+一些机器学习的最佳实践：
+1. 正确提取特征
+2. 特征使用之前需要正则化
+3. 配置合理的算法参数
+4. 使用稀疏矩阵
+5. 使用并行算法
+
+"""
 
 def run():
     with pyspark.SparkContext('local', 'mapAndPartition') as sc:
